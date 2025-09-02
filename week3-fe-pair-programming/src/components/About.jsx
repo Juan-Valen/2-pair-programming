@@ -1,3 +1,4 @@
+import aboutImg from '../assets/images/about.jpeg';
 const About = () => {
   return (
     <section className="section" id="about">
@@ -8,11 +9,7 @@ const About = () => {
   </div>
   <div className="section-center about-center">
     <div className="about-img">
-      <img
-        src="images/about.jpeg"
-        className="about-photo"
-        alt="awesome beach"
-      />
+      <img src={aboutImg} className="about-img" alt="awesome beach" />
     </div>
     <article className="about-info">
       <h3>explore the difference</h3>
