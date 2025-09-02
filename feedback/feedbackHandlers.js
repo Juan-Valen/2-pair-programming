@@ -1,4 +1,5 @@
 // feedbackHandlers.js
+/**
 const Feedback = require("./FeedbackLib");
 
 const getAllFeedbacks = (req, res) => {
@@ -53,3 +54,4 @@ module.exports = {
   updateFeedback,
   deleteFeedback,
 };
+ */

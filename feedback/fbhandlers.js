@@ -1,4 +1,4 @@
-const Feedback = require("./feedbackLib");
+const Feedback = require("./fblib");
 
 /**
  * Handler for GET /feedback.
