@@ -20,7 +20,7 @@ function Registration() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     return (
-        <div>
+        <div className="registration">
             <h2>Registration</h2>
             <form onSubmit={onSubmit}>
                 <div>

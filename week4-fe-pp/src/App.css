@@ -667,3 +667,19 @@ min-height:calc(100vh - 62px);
   margin: 20px;
   padding: 10px;
 }
+
+.registration {
+    margin: 20px;
+    margin-top: 80px;
+    padding: 20px;
+    border: 1px solid #000;
+}
+.registration label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #606060;
+}
+
+.temp {
+    margin-top: 80px;
+}
