@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0",
+    "mongodb": "^6.19.0",
     "mongoose": "^8.18.1",
     "morgan": "^1.10.1"
   },
@@ -21,7 +22,7 @@
     "nodemon": "^3.1.10",
     "supertest": "^7.1.4"
   },
-    "jest": {
+  "jest": {
     "testEnvironment": "node",
     "globalTeardown": "./tests/teardown.js"
   },

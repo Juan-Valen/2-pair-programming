@@ -7,7 +7,7 @@ const errorHandler = (error, request, response, next) => {
 
   response.status(500);
   response.json({
-    message: error.message,
+    message: "Something went wrong!",
   });
 };
 
@@ -18,7 +18,7 @@ const requestLogger = (request, response, next) => {
   console.log("---");
   next();
 };
- 
+
 module.exports = {
   requestLogger,
   unknownEndpoint,
