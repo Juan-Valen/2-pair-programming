@@ -4,29 +4,24 @@ const validator = require("validator");
 
 const userSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: [true, "Please add a name"],
-    },
-    email: {
-      type: String,
-      required: [true, "Please add an email"],
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: [true, "Please add a password"],
-    },
-  },
+  name: { type: String, required: [true, "Pelase add a name"] },
+  email: { type: String, required: [true, "Pelase add an email"], unique: true },
+  password: { type: String, required: [true, "Pelase add a password"] },
+  phone_number: { type: String, required: [true, "Pelase add a phonenumber"] },
+  gender: { type: String, required: [true, "Pelase add a gender"] },
+  date_of_birth: { type: Date, required: true },
+  membership_status: { type: String, required: true },
+},
+ 
   {
     timestamps: true,
   }
 );
 
-// static signup method
-userSchema.statics.signup = async function (name, email, password) {
+// static signup method creates a new user after validating the input + hashing the password
+userSchema.statics.signup = async function (name, email, passwordn, phone_number, gender, date_of_birth, membership_status) {
   // validation
-  if ((!name, !email || !password)) {
+  if ((!name, !email || !password || !phone_number || !gender || !date_of_birth || !membership_status)) {
     throw Error("Please add all fields");
   }
   if (!validator.isEmail(email)) {
@@ -49,12 +44,16 @@ userSchema.statics.signup = async function (name, email, password) {
     name,
     email,
     password: hashedPassword,
+    phone_number,
+    gender,
+    date_of_birth,
+    membership_status,
   });
 
   return user;
 };
 
-// static login method
+// static login method to authenticate a user 
 userSchema.statics.login = async function (email, password) {
   if (!email || !password) {
     throw Error("All fields must be filled");
