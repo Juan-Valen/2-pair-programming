@@ -22,6 +22,14 @@ const SignupComponent = ({ setIsAuthenticated }) => {
                     onChange={(e) => setForm((f) =>{ return {...f, password: e.target.value}})} />
             </label>
             <br />
+            <label>
+                Confirm Password:
+                <input
+                    type="password"
+                    value={form.password2}
+                    onChange={(e) => setForm((f) =>{ return {...f, password2: e.target.value}})} />
+            </label>
+            <br />
             <button onClick={handleSignup}>Sign Up</button>
         </div>
     );
