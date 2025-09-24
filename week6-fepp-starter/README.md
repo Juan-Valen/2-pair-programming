@@ -1,3 +1,4 @@
+# Discussions log
 ## Login discussion
 
 The purpose of userSchema.statics.login in userModel.js is to encapsulate the communication with the database and the login logic into the model method. This keeps controllers slim and makes the logic reusable if multiple controllers need it.
