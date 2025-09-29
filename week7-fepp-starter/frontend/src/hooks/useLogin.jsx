@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function useLogin(url) {
+export default function useLogin(setIsAuthenticated) {
+    const url = "/api/users/login"
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
     const navigate = useNavigate();
@@ -9,23 +10,24 @@ export default function useLogin(url) {
         setIsLoading(true);
         setError(null);
         const response = await fetch(url, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(object),
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(object),
         });
         const user = await response.json();
-    
+
         if (!response.ok) {
-          setError(user.error);
-          setIsLoading(false);
-          return error;
+            setError(user.error);
+            setIsLoading(false);
+            return error;
         }
-    
+
         // localStorage.setItem("token", user.token);
         localStorage.setItem("user", JSON.stringify(user));
+        setIsAuthenticated(true);
         setIsLoading(false);
-         navigate("/")
-      };
+        navigate("/")
+    };
 
-      return { login, isLoading, error };
+    return { login, isLoading, error };
 }

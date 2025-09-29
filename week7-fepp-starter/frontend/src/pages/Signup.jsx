@@ -2,7 +2,7 @@ import useField from "../hooks/useField";
 import useSignup from "../hooks/useSignup";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({setIsAuthenticated}) => {
   const navigate = useNavigate();
   const name = useField("text");  
   const email = useField("email");
@@ -12,7 +12,7 @@ const Signup = () => {
   const dateOfBirth = useField("date");
   const membershipStatus = useField("text");
 
-  const { signup, error } = useSignup("/api/users/signup");
+  const { signup } = useSignup(setIsAuthenticated);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -25,10 +25,6 @@ const Signup = () => {
       date_of_birth: dateOfBirth.value,
       membership_status: membershipStatus.value,
     });
-    // if (error != null) {
-    //   console.log("success");
-    //   navigate("/");
-    // }
   };
 
   return (
