@@ -5,6 +5,8 @@ const Navbar = () => {
       <div className="links">
         <a href="/">Home</a>
         <a href="/add-job">Add Job</a>
+        <a href="/signup">Sign up</a>
+        <a href="/login">Login</a>
       </div>
     </nav>
   );
