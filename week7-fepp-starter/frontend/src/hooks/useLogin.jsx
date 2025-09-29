@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function useLogin(url) {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
+    const navigate = useNavigate();
     const login = async (object) => {
         setIsLoading(true);
         setError(null);
@@ -22,6 +24,7 @@ export default function useLogin(url) {
         // localStorage.setItem("token", user.token);
         localStorage.setItem("user", JSON.stringify(user));
         setIsLoading(false);
+         navigate("/")
       };
 
       return { login, isLoading, error };

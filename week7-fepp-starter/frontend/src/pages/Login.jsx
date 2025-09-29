@@ -15,10 +15,10 @@ const Login = () => {
       email: email.value,
       password: password.value,
     });
-    if (!error) {
-      console.log("success");
-      navigate("/");
-    }
+    // if (error != null) {
+    //   console.log("success");
+    //   navigate("/");
+    // }
   };
 
   return (

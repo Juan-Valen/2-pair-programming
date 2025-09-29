@@ -25,10 +25,10 @@ const Signup = () => {
       date_of_birth: dateOfBirth.value,
       membership_status: membershipStatus.value,
     });
-    if (!error) {
-      console.log("success");
-      navigate("/");
-    }
+    // if (error != null) {
+    //   console.log("success");
+    //   navigate("/");
+    // }
   };
 
   return (
