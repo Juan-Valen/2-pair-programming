@@ -12,33 +12,30 @@ const generateToken = (_id) => {
 const signupUser = async (req, res) => {
   const {
     name,
-    username,
+    email,
     password,
-    phone_number,
-    gender,
-    date_of_birth,
-    membership_status,
+    role,
+    lastLogin,
+    bio,
   } = req.body;
 
   try {
     if (
       !name ||
-      !username ||
+      !email ||
       !password ||
-      !phone_number ||
-      !gender ||
-      !date_of_birth ||
-      !membership_status
+      !role ||
+      !bio
     ) {
       res.status(400);
       throw new Error("Please add all fields");
     }
 
     // Check if user exists
-    const userExists = await User.findOne({ username });
+    const userExists = await User.findOne({ email });
     if (userExists) {
       res.status(400);
-      throw new Error("Username already taken");
+      throw new Error("Email already taken");
     }
 
     // Hash password
@@ -48,19 +45,18 @@ const signupUser = async (req, res) => {
     // Create user
     const user = await User.create({
       name,
-      username,
+      email,
       password: hashedPassword,
-      phone_number,
-      gender,
-      date_of_birth,
-      membership_status,
+      role,
+      lastLogin,
+      bio,
     });
 
     if (user) {
       const token = generateToken(user._id);
       res.status(201).json({
         _id: user._id,
-        username: user.username,
+        email: user.email,
         token,
       });
     } else {
@@ -73,16 +69,16 @@ const signupUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
 
     if (user && (await bcrypt.compare(password, user.password))) {
       const token = generateToken(user._id);
       res.status(200).json({
         _id: user._id,
-        username: user.username,
+        email: user.email,
         token,
       });
     } else {
