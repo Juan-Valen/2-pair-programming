@@ -1,15 +1,19 @@
 const express = require("express");
+const router = express.Router();
 const {
-  getAllUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser,
+  signupUser,
+  loginUser,
+  getMe,
 } = require("../controllers/userControllers");
 
-const router = express.Router();
+// // Middleware to protect routes
+// const requireAuth = require("../middleware/requireAuth");
 
-router.get("/", getAllUsers);
-router.post("/", createUser);
+// Public routes
+router.post("/signup", signupUser);
+router.post("/login", loginUser);
+
+// // Protected route
+// router.get("/me", requireAuth, getMe);
 
 module.exports = router;
